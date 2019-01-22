@@ -48,6 +48,7 @@ class UserType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'multiple' => true,
                 'choices' => [
+                    'Administrador' => 'ROLE_ADMIN',
                     'Usuário' => 'ROLE_USER',
                     'Post' => 'ROLE_POST',
                     'Categoria' => 'ROLE_CATEGORIA',
