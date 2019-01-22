@@ -1,0 +1,64 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block body %}
+
+
+<main class="main">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">Admin</li>
+        <li class="breadcrumb-item active">Usuários</li>
+    </ol>
+    <div class="container-fluid">
+        <div class="animated fadeIn">
+            {% include 'includes/messages.html.twig' %}
+
+            <div class="card">
+                <div class="card-header">
+                    <i class="cui-list"></i> Listar</div>
+                <div class="card-body">
+                    <div class="row">
+                        <a class="btn btn-success" href="{{ path('admin_user_new') }}">cadastrar</a>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <table class="table table-responsive-sm table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nome</th>
+                                    <th>Sobrenome</th>
+                                    <th>E-mail</th>
+                                    <th>Criado em</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.firstName }}</td>
+                                <td>{{ user.lastName }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.createdAt|date('d/m/Y H:i:s') }}</td>
+                                <td>
+                                    <div class="row ">
+                                        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                                            <a class="btn btn-primary" href="{{ path('admin_user_update', { 'id': user.id }) }}">editar</a>
+                                        </div>
+                                        <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                                            <a class="btn btn-danger" href="{{ path('admin_user_delete', { 'id': user.id }) }}">excluir</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

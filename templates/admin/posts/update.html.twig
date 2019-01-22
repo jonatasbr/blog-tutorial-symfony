@@ -1,0 +1,38 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block body %}
+
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Admin</li>
+            <li class="breadcrumb-item active">Post</li>
+        </ol>
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                {{ form_start(form) }}
+
+                    <div class="card">
+                        <div class="card-header">
+                            <i class="cui-note"></i> Editar</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12">
+
+                                    {{ form_widget(form) }}
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-success" type="submit">salvar</button>
+                            <a href="{{ path('admin_post') }}" class="btn btn-danger">cancelar</a>
+                        </div>
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}

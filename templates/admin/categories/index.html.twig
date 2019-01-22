@@ -1,0 +1,63 @@
+{% extends 'admin/admin_layout.html.twig' %}
+
+{% block body %}
+
+    <main class="main">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item">Admin</li>
+            <li class="breadcrumb-item active">Categorias</li>
+        </ol>
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                {% include 'includes/messages.html.twig' %}
+
+                <div class="card">
+                    <div class="card-header">
+                        <i class="cui-list"></i> Listar</div>
+                    <div class="card-body">
+                        <div class="row">
+                            <a class="btn btn-success" href="{{ path('admin_category_new') }}">cadastrar</a>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <table class="table table-responsive-sm table-striped">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Nome</th>
+                                    <th>Descrição</th>
+                                    <th>Criado em</th>
+                                    <th>Alterado em</th>
+                                    <th>Ações</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for category in categories %}
+                                    <tr>
+                                        <td>{{ category.id }}</td>
+                                        <td>{{ category.name }}</td>
+                                        <td>{{ category.description }}</td>
+                                        <td>{{ category.createdAt|date('d/m/Y H:i:s') }}</td>
+                                        <td>{{ category.updatedAt|date('d/m/Y H:i:s') }}</td>
+                                        <td>
+                                            <div class="row ">
+                                                <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                                                    <a class="btn btn-primary" href="{{ path('admin_category_update', { 'id': category.id }) }}">editar</a>
+                                                </div>
+                                                <div class="col-6 col-sm-4 col-md-2 col-xl mb-3 mb-xl-0">
+                                                    <a class="btn btn-danger" href="{{ path('admin_category_delete', { 'id': category.id }) }}">excluir</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+{% endblock %}
